@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "468958018042",
+    "project_id": "lookup-j8h1i6",
+    "storage_bucket": "lookup-j8h1i6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468958018042:android:c94c3cfe6625cbfc1b4c43",
+        "android_client_info": {
+          "package_name": "com.example.lookup"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHVTpzF2vjfBQr4lvEWinIuEd10IQBlsc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468958018042:android:0e6bb0a267358de31b4c43",
+        "android_client_info": {
+          "package_name": "com.example.plantpal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHVTpzF2vjfBQr4lvEWinIuEd10IQBlsc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468958018042:android:0a3a9ce6e5ed3c111b4c43",
+        "android_client_info": {
+          "package_name": "com.mycompany.lookup"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHVTpzF2vjfBQr4lvEWinIuEd10IQBlsc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

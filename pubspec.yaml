@@ -1,0 +1,40 @@
+name: plantpal
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  cloud_firestore: ^5.0.1
+  cupertino_icons: ^1.0.6
+  firebase_auth: ^5.1.0
+  firebase_core: ^3.1.0
+  flutter:
+    sdk: flutter
+  flutter_animate: ^4.5.0
+  flutter_screenutil: ^5.9.3
+  flutter_svg: ^2.0.10+1
+  get: 4.6.6
+  google_fonts: ^6.2.1
+
+dev_dependencies:
+  flutter_lints: ^3.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/svg/fi_check.svg
+    - assets/LOGO(1).png
+    - assets/image 5(1).png
+    - assets/svg/rocket-launch.svg
+    - assets/natural-product 1.png
+    - assets/market 1.png
+    - assets/community 1.png
+    - assets/svg/pana.svg
+    - assets/svg/social media logo.svg
+    - assets/svg/pana-full.svg
+    - assets/svg/rafiki.svg
