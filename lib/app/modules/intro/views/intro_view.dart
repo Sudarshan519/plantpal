@@ -17,11 +17,9 @@ class IntroView extends GetView<IntroController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column( 
+        child: Column(
           children: [
-            const SizedBox(
-              height: 80,
-            ),
+            SizedBox(height: 90.h),
             Center(
               child: Image.asset(
                 'assets/image 5(1).png',
@@ -29,9 +27,7 @@ class IntroView extends GetView<IntroController> {
                 fit: BoxFit.fitHeight,
               ),
             ),
-              SizedBox(
-              height: 16.h,
-            ),
+            SizedBox(height: 20.h),
             Text(
               "Your Ultimate Plant\nCare Companion!",
               style: GoogleFonts.ebGaramond(
@@ -41,9 +37,8 @@ class IntroView extends GetView<IntroController> {
               ),
               textAlign: TextAlign.center,
             ),
-              SizedBox(height: 20.h),
-           
-             const IntroText(
+            SizedBox(height: 30.h),
+            const IntroText(
               index: 0,
             ).animate().fade(delay: const Duration(seconds: 1)),
             const IntroText(
@@ -57,7 +52,8 @@ class IntroView extends GetView<IntroController> {
             ).animate().fade(delay: const Duration(seconds: 4)),
             const Spacer(),
             const GetStartedButton().animate().fade(
-                delay: const Duration(seconds: 5),  ),
+                  delay: const Duration(seconds: 5),
+                ),
             const SizedBox(
               height: 40,
             )
@@ -77,17 +73,23 @@ class IntroText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RPadding(
-      padding: const EdgeInsets.only(bottom: 12,left:16,right: 16),
+      padding: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset('assets/svg/fi_check.svg',height: 16.h,),
-            SizedBox(
+          SvgPicture.asset(
+            'assets/svg/fi_check.svg',
+            height: 18.h,
+          ),
+          SizedBox(
             width: 4.w,
           ),
           Text(
             introTexts[index],
-            style:   TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500,color: const Color(0xff1F2937)),
+            style: TextStyle(
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w500,
+                color: const Color(0xff1F2937)),
           ),
         ],
       ),
@@ -102,51 +104,71 @@ class GetStartedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Hero(tag: 'button',
-      child: AppButton(title:'GetStarted',onPressed:()=>  Get.toNamed(Routes.PROFILE_SETUP),icon:SvgPicture.asset('assets/svg/rocket-launch.svg',
-              height: 24, width: 24),),
+    return Hero(
+      tag: 'button',
+      child: AppButton(
+        title: 'Get Started',
+        onPressed: () => Get.toNamed(Routes.PROFILE_SETUP),
+        icon: SvgPicture.asset('assets/svg/rocket-launch.svg',
+            height: 24, width: 24),
+      ),
     );
   }
 }
 
 class AppButton extends StatelessWidget {
   const AppButton({
-    super.key, required this.title, this.onPressed,   this.icon, this.color, this.btnTextColor,
+    super.key,
+    required this.title,
+    this.onPressed,
+    this.icon,
+    this.color,
+    this.btnTextColor,
   });
   final Widget? icon;
-final String title;
-final Function()? onPressed;
-final Color? color;
-final Color? btnTextColor;
+  final String title;
+  final Function()? onPressed;
+  final Color? color;
+  final Color? btnTextColor;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 64,
-      decoration: BoxDecoration(boxShadow: const [
-        BoxShadow(color: Colors.black,  offset: Offset(0.0, 3.0),),
-      ], borderRadius: BorderRadius.circular(16), ),
+      height: 64.h,
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: color ?? Colors.black,
+            offset: const Offset(0.0, 3.0),
+          ),
+        ],
+        borderRadius: BorderRadius.circular(16),
+      ),
       margin: const EdgeInsets.symmetric(horizontal: 16),
       width: double.infinity,
-      child:icon==null?ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            backgroundColor: darkGreeTextColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            )),
-        
-        onPressed: onPressed,
-        child:   Text(title, style: TextStyle(color: Colors.white)),
-      ): ElevatedButton.icon(
-        style: ElevatedButton.styleFrom(
-            backgroundColor:color?? darkGreeTextColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            )),
-        icon:icon?? SvgPicture.asset('assets/svg/rocket-launch.svg',
-            height: 24.r, width: 24.r),
-        onPressed:onPressed,
-        label:   Text(title, style: TextStyle(color:btnTextColor?? Colors.white,fontSize: 16.sp)),
-      ),
+      child: icon == null
+          ? ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: darkGreeTextColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  )),
+              onPressed: onPressed,
+              child: Text(title, style: const TextStyle(color: Colors.white)),
+            )
+          : ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: color ?? darkGreeTextColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  )),
+              icon: icon ??
+                  SvgPicture.asset('assets/svg/rocket-launch.svg',
+                      height: 24.r, width: 24.r),
+              onPressed: onPressed,
+              label: Text(title,
+                  style: TextStyle(
+                      color: btnTextColor ?? Colors.white, fontSize: 16.sp)),
+            ),
     );
   }
 }

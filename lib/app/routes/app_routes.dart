@@ -9,6 +9,7 @@ abstract class Routes {
   static const PROFILE_SETUP = _Paths.PROFILE_SETUP;
   static const START_JOURNEY = _Paths.START_JOURNEY;
   static const SIGNUP = _Paths.SIGNUP;
+  static const ADD_PLANT = _Paths.ADD_PLANT;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const PROFILE_SETUP = '/profile-setup';
   static const START_JOURNEY = '/start-journey';
   static const SIGNUP = '/signup';
+  static const ADD_PLANT = '/add-plant';
 }

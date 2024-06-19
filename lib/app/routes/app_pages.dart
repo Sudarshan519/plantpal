@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/add_plant/bindings/add_plant_binding.dart';
+import '../modules/add_plant/views/add_plant_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/intro/bindings/intro_binding.dart';
@@ -50,6 +52,11 @@ class AppPages {
       name: _Paths.SIGNUP,
       page: () => const SignupView(),
       binding: SignupBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_PLANT,
+      page: () => const AddPlantView(),
+      binding: AddPlantBinding(),
     ),
   ];
 }

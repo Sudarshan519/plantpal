@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   //TODO: Implement HomeController
 
-  final count = 0.obs;
+  final _selectedNav = 0.obs;
+  int get selectedNav => _selectedNav.value;
+  set selectedNav(int i) => _selectedNav(i);
   @override
   void onInit() {
     super.onInit();
@@ -19,5 +21,5 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
+  void increment() => _selectedNav.value++;
 }
