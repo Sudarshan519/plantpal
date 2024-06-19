@@ -13,6 +13,7 @@ class SplashView extends GetView<SplashController> {
   const SplashView({super.key});
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context,designSize: Size(428,926));
     initAppServices();
 
     return Scaffold(

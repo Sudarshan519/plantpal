@@ -14,13 +14,13 @@ import '../controllers/intro_controller.dart';
 class IntroView extends GetView<IntroController> {
   const IntroView({super.key});
   @override
-  Widget build(BuildContext context) {ScreenUtil.init(context);
+  Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Column( 
           children: [
             const SizedBox(
-              height: 30,
+              height: 80,
             ),
             Center(
               child: Image.asset(
@@ -104,7 +104,7 @@ class GetStartedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Hero(tag: 'button',
       child: AppButton(title:'GetStarted',onPressed:()=>  Get.toNamed(Routes.PROFILE_SETUP),icon:SvgPicture.asset('assets/svg/rocket-launch.svg',
-              height: 18, width: 18),),
+              height: 24, width: 24),),
     );
   }
 }
@@ -121,7 +121,7 @@ final Color? btnTextColor;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 56,
+      height: 64,
       decoration: BoxDecoration(boxShadow: const [
         BoxShadow(color: Colors.black,  offset: Offset(0.0, 3.0),),
       ], borderRadius: BorderRadius.circular(16), ),
@@ -143,7 +143,7 @@ final Color? btnTextColor;
               borderRadius: BorderRadius.circular(12),
             )),
         icon:icon?? SvgPicture.asset('assets/svg/rocket-launch.svg',
-            height: 16.r, width: 18.r),
+            height: 24.r, width: 24.r),
         onPressed:onPressed,
         label:   Text(title, style: TextStyle(color:btnTextColor?? Colors.white,fontSize: 16.sp)),
       ),
