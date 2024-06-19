@@ -18,28 +18,31 @@ class HomeView extends GetView<HomeController> {
         children: [
           Stack(
             children: [
-              Image.asset('assets/Frame 6.png'),
-              // Container(
-              //   height: 256.h,
-              //   color: darkGreeTextColor,
-              // ),
-              // Positioned(
-              //     left: 80,
-              //     child: Container(
-              //         width: Get.width,
-              //         height: 333,
-              //         child: SvgPicture.asset(
-              //           'assets/svg/pana-full.svg',
-              //           fit: BoxFit.contain,
-              //           width: Get.width,
-              //           height: 333,
-              //         ))),
+              // Image.asset('assets/Frame 6.png'),
+              // Container(color: Colors.white.withOpacity(.9),)
+          //  ,
+              Container(
+                height: 256.h,
+                color: splashColor,
+              ),
+             
+              Positioned(
+                  left: 80,
+                  child: Container(
+                      width: Get.width,
+                      height: 333,
+                      child: SvgPicture.asset(
+                        'assets/svg/pana-full.svg',
+                        fit: BoxFit.contain,
+                        width: Get.width,
+                        height: 333,
+                      ))),
             ],
           ),
           Transform.translate(
             offset: const Offset(0, -140),
             child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+             
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -51,9 +54,9 @@ class HomeView extends GetView<HomeController> {
                         children: [
                           Text(
                             "Good Morning,",
-                            style: TextStyle(color: const Color(0xffC0E9C4),fontWeight: FontWeight.w500,fontSize: 14.sp),
+                            style: TextStyle(color: const Color(0xffC0E9C4),fontWeight: FontWeight.w500,fontSize: 14),
                           ),
-                          Text("Ranjit Shrestha",style: GoogleFonts.ebGaramond(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 24.sp),),
+                          Text("Ranjit Shrestha",style: GoogleFonts.ebGaramond(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 24),),
                         ],
                       ),
                       const CircleAvatar(
@@ -69,17 +72,39 @@ class HomeView extends GetView<HomeController> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Today's facts", style: TextStyle(color: const Color(0xffC0E9C4),fontWeight: FontWeight.w500,fontSize: 14.sp),),
+                      Text("Today's facts", style: TextStyle(color: const Color(0xffC0E9C4),fontWeight: FontWeight.w500,fontSize: 14),),
                     SizedBox(height: 8.h,),  Container(
-                        height: 139.h,
-                        width: 300,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12),
-                            boxShadow: [const BoxShadow(color: Colors.grey)],
-                            border: Border.all(color: Colors.grey.shade200)),
-                            child:Row(children: [Image.network('https://images.unsplash.com/photo-1485955900006-10f4d324d411?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')],)
+                       height: 139.h,
+                      
+                      child: ListView(scrollDirection: Axis.horizontal,
+                       padding: const EdgeInsets.symmetric(horizontal: 20),
+                        children: [
+                          Container(
+                              height: 139.h,
+                              width: 300,
+                              margin: EdgeInsets.only(right: 16),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(12),
+                                  boxShadow: [const BoxShadow(color: Colors.grey)],
+                                  border: Border.all(color: Colors.grey.shade200)),
+                                  child:Row(children: [ClipRRect(
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: Image.network('https://images.unsplash.com/photo-1485955900006-10f4d324d411?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'))],)
+                            ),
+                             Container(
+                              height: 139.h,
+                              width: 300,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(12),
+                                  boxShadow: [const BoxShadow(color: Colors.grey)],
+                                  border: Border.all(color: Colors.grey.shade200)),
+                                  child:Row(children: [Image.network('https://images.unsplash.com/photo-1485955900006-10f4d324d411?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')],)
+                            ),
+                        ],
                       ),
+                    ),
                       const Text("My Plants"),
                       Center(
                         child: SvgPicture.asset(
