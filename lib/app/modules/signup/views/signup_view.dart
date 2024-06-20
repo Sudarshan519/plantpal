@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
+import 'package:plantpal/app/core/app_assets/app_assets.dart';
 import 'package:plantpal/app/core/constants.dart';
 import 'package:plantpal/app/features/auth/presentation/auth_controller.dart';
 import 'package:plantpal/app/modules/intro/views/intro_view.dart';
@@ -13,9 +14,10 @@ import 'package:plantpal/app/routes/app_pages.dart';
 import '../controllers/signup_controller.dart';
 
 class SignupView extends GetView<SignupController> {
-  const SignupView({Key? key}) : super(key: key);
+  const SignupView({super.key});
   @override
   Widget build(BuildContext context) {
+    final AuthController authController = Get.find();
     return Scaffold(
       appBar: AppBar(
         title: const ProfileProgress(
@@ -33,21 +35,26 @@ class SignupView extends GetView<SignupController> {
             const Expanded(child: CreateAccountWidget()),
             Hero(
               tag: 'button',
-              child: AppButton(
-                btnTextColor: const Color(0xff0B3010),
-                color: creatAccountBtnColor,
-                icon: SvgPicture.asset('assets/svg/social media logo.svg'),
-                title: 'Create with Google',
-                onPressed: () {
-                  AuthController authController = Get.find();
-
-                  authController.signIn().then((onResponse) {
-                    onResponse.fold((left) {
-                      Get.snackbar("Error", left.message);
-                    }, (right) => Get.offNamed(Routes.HOME));
-                  });
-                },
-              ).animate(target: 1).fade(end: 0.8).scaleXY(end: 1),
+              child: Obx(
+                () => AppButton(
+                  btnTextColor: const Color(0xff0B3010),
+                  color: creatAccountBtnColor,
+                  icon: SvgPicture.asset(AppAssets.socialMediaLogo),
+                  title: 'Create with Google',
+                  onPressed: () {
+                    authController.loading(true);
+                    authController.signIn().then((onResponse) {
+                      authController.loading(false);
+                      onResponse.fold((left) {
+                        Get.snackbar("Error", left.message);
+                      }, (right) => Get.offNamed(Routes.HOME));
+                    });
+                  },
+                  child: authController.loading.isTrue
+                      ? const CircularProgressIndicator()
+                      : null,
+                ).animate(target: 1).fade(end: 0.8).scaleXY(end: 1),
+              ),
             ),
             SizedBox(
               height: 30.h,

@@ -10,7 +10,7 @@ import 'package:plantpal/app/routes/app_pages.dart';
 import '../controllers/start_journey_controller.dart';
 
 class StartJourneyView extends GetView<StartJourneyController> {
-  const StartJourneyView({Key? key}) : super(key: key);
+  const StartJourneyView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

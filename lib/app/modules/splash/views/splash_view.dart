@@ -1,8 +1,8 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:plantpal/app/core/app_assets/app_assets.dart';
 import 'package:plantpal/app/core/constants.dart';
 import 'package:plantpal/app/init_services.dart';
 
@@ -19,7 +19,7 @@ class SplashView extends GetView<SplashController> {
       backgroundColor: splashColor,
       body: Center(
           child: Image.asset(
-        'assets/LOGO(1).png',
+        AppAssets.logo1_,
         height: 84,
         width: 220,
         fit: BoxFit.fitHeight,

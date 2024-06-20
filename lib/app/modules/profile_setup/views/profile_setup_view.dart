@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plantpal/app/core/app_assets/app_assets.dart';
 import 'package:plantpal/app/core/constants.dart';
 import 'package:plantpal/app/features/auth/presentation/auth_controller.dart';
 import 'package:plantpal/app/modules/intro/views/intro_view.dart';
@@ -56,8 +57,7 @@ class ProfileSetupView extends GetView<ProfileSetupController> {
                       padding: const EdgeInsets.only(bottom: 30),
                       child: AppButton(
                         color: creatAccountBtnColor,
-                        icon: SvgPicture.asset(
-                            'assets/svg/social media logo.svg'),
+                        icon: SvgPicture.asset(AppAssets.socialMediaLogo),
                         title: 'Create with Google',
                         onPressed: () {},
                       ),
@@ -115,7 +115,7 @@ class CreateAccountWidget extends StatelessWidget {
         SizedBox(
           height: 16.h,
         ),
-        SvgPicture.asset('assets/svg/pana.svg'),
+        SvgPicture.asset(AppAssets.pana),
       ],
     );
   }

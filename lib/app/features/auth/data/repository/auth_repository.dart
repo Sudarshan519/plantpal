@@ -29,11 +29,11 @@ class AuthRepositoryImpl implements AuthRepository {
       UserCredential? userCredential =
           await FirebaseAuth.instance.signInWithCredential(credential);
       if (username?.isNotEmpty == true) {
-        userCredential.user?.updateDisplayName(username);
+        await userCredential.user?.updateDisplayName(username);
       }
 
       /// update user name and feature
-      FirebaseFirestore.instance
+      await FirebaseFirestore.instance
           .collection('users')
           .doc(userCredential.user?.uid)
           .set({"username": username, "selectedFeature": selectedFeature});

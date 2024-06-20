@@ -26,7 +26,7 @@ class Profile extends StatelessWidget {
             Get.offNamed(Routes.SIGNUP);
           },
           leading: const CircleAvatar(
-            backgroundColor: const Color(0xffECF8EC),
+            backgroundColor: Color(0xffECF8EC),
             child: Icon(
               Icons.door_sliding_outlined,
               color: darkGreeTextColor,

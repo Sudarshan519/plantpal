@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plantpal/app/core/app_assets/app_assets.dart';
 import 'package:plantpal/app/core/constants.dart';
 import 'package:plantpal/app/routes/app_pages.dart';
 
@@ -22,7 +23,7 @@ class IntroView extends GetView<IntroController> {
             SizedBox(height: 90.h),
             Center(
               child: Image.asset(
-                'assets/image 5(1).png',
+                AppAssets.image51_,
                 height: 200.h,
                 fit: BoxFit.fitHeight,
               ),
@@ -78,7 +79,7 @@ class IntroText extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgPicture.asset(
-            'assets/svg/fi_check.svg',
+            AppAssets.fiCheck,
             height: 18.h,
           ),
           SizedBox(
@@ -109,8 +110,7 @@ class GetStartedButton extends StatelessWidget {
       child: AppButton(
         title: 'Get Started',
         onPressed: () => Get.toNamed(Routes.PROFILE_SETUP),
-        icon: SvgPicture.asset('assets/svg/rocket-launch.svg',
-            height: 24, width: 24),
+        icon: SvgPicture.asset(AppAssets.rocketLaunch, height: 24, width: 24),
       ),
     );
   }
@@ -165,7 +165,7 @@ class AppButton extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   )),
               icon: icon ??
-                  SvgPicture.asset('assets/svg/rocket-launch.svg',
+                  SvgPicture.asset(AppAssets.rocketLaunch,
                       height: 24.r, width: 24.r),
               onPressed: onPressed,
               label: child ??

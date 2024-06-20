@@ -6,34 +6,19 @@ import 'package:plantpal/app/features/plant/domain/repository/plant_repository_i
 import 'package:plantpal/app/features/plant/presentation/plant_controller.dart';
 
 class AddPlantController extends GetxController {
-  //TODO: Implement AddPlantController
   final PlantRepository plantRepository = Get.find();
   final count = 0.obs;
   var selectedImage = ''.obs;
-  var image_uploading = false.obs;
+  var imageUploading = false.obs;
   var uploadingPlant = false.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
 
   void increment() => count.value++;
   Future<void> uploadImage() async {
     var image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image != null) {
-      image_uploading(true);
-      selectedImage(await plantRepository.uploadImage(image?.path ?? ""));
-      image_uploading(false);
+      imageUploading(true);
+      selectedImage(await plantRepository.uploadImage(image.path));
+      imageUploading(false);
     }
   }
 

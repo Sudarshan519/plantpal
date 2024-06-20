@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plantpal/app/core/app_assets/app_assets.dart';
 import 'package:plantpal/app/core/constants.dart';
 import 'package:plantpal/app/features/auth/presentation/auth_controller.dart';
 import 'package:plantpal/app/features/plant/data/model/plant.dart';
@@ -159,7 +160,7 @@ class EmptyPlantsWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               SvgPicture.asset(
-                'assets/svg/rafiki.svg',
+                AppAssets.rafiki,
                 height: 160.h,
                 width: 151.w,
               ),

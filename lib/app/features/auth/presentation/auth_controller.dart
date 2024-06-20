@@ -8,6 +8,7 @@ class AuthController extends GetxController {
   final AuthenticationUseCase _authUseCase;
   User? _user;
   final authenticated = false.obs;
+  final loading = false.obs;
 
   final selectedFeature = ''.obs;
   final username = ''.obs;

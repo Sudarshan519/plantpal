@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -57,7 +56,7 @@ class AddPlantView extends GetView<AddPlantController> {
                 ),
               ),
               Obx(
-                () => controller.image_uploading.value
+                () => controller.imageUploading.value
                     ? const CircularProgressIndicator()
                     : controller.selectedImage.value == ''
                         ? const SizedBox()

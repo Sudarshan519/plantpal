@@ -1,39 +1,24 @@
-import 'dart:ffi';
-
 import 'package:get/get.dart';
-class Feature{
- final String image;
- final String label;
+import 'package:plantpal/app/core/app_assets/app_assets.dart';
+
+class Feature {
+  final String image;
+  final String label;
 
   Feature({required this.image, required this.label});
 }
-final featues=[
-  Feature(image: 'assets/natural-product 1.png', label: "Plant Care"),
-   Feature(image: 'assets/community 1.png', label: "Plant Lover Community"),
-   Feature(image: 'assets/market 1.png',label: 'Plant Marketplace')
+
+final featues = [
+  Feature(image: AppAssets.naturalProduct1, label: "Plant Care"),
+  Feature(image: AppAssets.community1, label: "Plant Lover Community"),
+  Feature(image: AppAssets.market1, label: 'Plant Marketplace')
 ];
 
 class ProfileSetupController extends GetxController {
- 
-
   final _count = 0.obs;
- int get  count=>_count.value;
- set count(int count)=>_count(count);
- final selectedFeature=''.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
+  int get count => _count.value;
+  set count(int count) => _count(count);
+  final selectedFeature = ''.obs;
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() =>count<3? _count.value++:_count.value;
+  void increment() => count < 3 ? _count.value++ : _count.value;
 }

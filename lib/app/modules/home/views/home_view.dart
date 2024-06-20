@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:plantpal/app/core/app_assets/app_assets.dart';
 import 'package:plantpal/app/core/constants.dart';
 import 'package:plantpal/app/features/plant/data/model/plant.dart';
 import 'package:plantpal/app/modules/home/views/tabs/community.dart';
@@ -149,7 +150,7 @@ class BackroundImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      'assets/Frame 6.png',
+      AppAssets.frame6,
       height: 256.h,
       width: double.infinity,
       fit: BoxFit.fill,
@@ -212,7 +213,7 @@ class PlantComponent extends StatelessWidget {
                     maxLines: 4,
                   ),
                   SizedBox(height: 4.h),
-                  Spacer(),
+                  const Spacer(),
                   Row(
                     children: [
                       Text("Continue Reading",

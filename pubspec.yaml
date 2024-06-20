@@ -34,18 +34,10 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/google_fonts/
+    - assets/images/
     - assets/nav_icons/
-    - assets/svg/fi_check.svg
-    - assets/LOGO(1).png
-    - assets/image 5(1).png
-    - assets/svg/rocket-launch.svg
-    - assets/natural-product 1.png
-    - assets/market 1.png
-    - assets/community 1.png
-    - assets/svg/pana.svg
-    - assets/svg/social media logo.svg
-    - assets/svg/pana-full.svg
-    - assets/svg/rafiki.svg
-    - assets/Frame 6.png
-
+    - assets/svg/
+    
+ 
 
