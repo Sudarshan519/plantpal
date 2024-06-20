@@ -5,7 +5,7 @@ import 'package:plantpal/app/features/plant/domain/repository/plant_repository_i
 
 class PlantController extends GetxController with StateMixin<List<PlantModel>> {
   final PlantRepository plantRepository = Get.find();
-  var plants = <PlantModel>[].obs;
+ 
 
   @override
   void onInit() {
@@ -17,8 +17,12 @@ class PlantController extends GetxController with StateMixin<List<PlantModel>> {
   Future<void> loadPlants() async {
     change(null, status: RxStatus.loading());
     try {
-      var plants = await plantRepository.allPlants();
+      var result = await plantRepository.allPlants();
+    result.fold((left){
+      change(null,status: RxStatus.error(left.message));
+    },(plants){
       change(plants, status: RxStatus.success());
+    }) ; 
     } on PlatformException catch (e) {
       change(null, status: RxStatus.error(e.message.toString()));
     } catch (e) {

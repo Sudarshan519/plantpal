@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:plantpal/app/features/auth/presentation/auth_controller.dart';
@@ -17,19 +18,38 @@ class AddPlantController extends GetxController {
     var image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image != null) {
       imageUploading(true);
-      selectedImage(await plantRepository.uploadImage(image.path));
+      await plantRepository.uploadImage(image.path).then((result) {
+        result.fold((left) {
+          Get.snackbar('Error', left.message);
+        }, (result) {
+          selectedImage(result);
+        });
+      });
+
       imageUploading(false);
     }
   }
 
   Future<void> uploadPlant(String name, String description) async {
     uploadingPlant(true);
-    await plantRepository.addPlantRepository(PlantModel(
-        name: name,
-        description: description,
-        image: selectedImage.value,
-        email: Get.find<AuthController>().user?.email ?? ""));
-    uploadingPlant(true);
+    try {
+      await plantRepository
+          .addPlantRepository(PlantModel(
+              name: name,
+              description: description,
+              image: selectedImage.value,
+              email: Get.find<AuthController>().user?.email ?? ""))
+          .then((result) {
+        result.fold((left) {
+          Get.snackbar('Error', left.message);
+        }, (right) {
+          uploadingPlant(true);
+        });
+      });
+    } on FirebaseException catch (e) {
+       Get.snackbar('Error', e.message??"");
+    }
+
     final PlantController controller = Get.find();
     controller.loadPlants();
     Get.back();

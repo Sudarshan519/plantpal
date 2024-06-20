@@ -32,7 +32,9 @@ class AuthController extends GetxController {
     Either<AuthUseCaseFailure, UserCredential> result =
         await _authUseCase.signIn(
             username: username.value, selectedFeature: selectedFeature.value);
-    result.fold((left) {}, (user) {
+    result.fold((left) {
+     
+    }, (user) {
       _user = user.user;
       username(_user?.displayName);
     });
