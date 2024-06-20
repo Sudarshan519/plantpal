@@ -101,7 +101,7 @@ class MyPlants extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final PlantController controller = Get.find();
-    // controller.loadPlants();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -133,7 +133,7 @@ class PlantLists extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         padding: EdgeInsets.zero,
         shrinkWrap: true,
         itemCount: plants.length,

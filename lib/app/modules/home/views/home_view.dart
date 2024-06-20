@@ -8,7 +8,6 @@ import 'package:plantpal/app/modules/home/views/tabs/community.dart';
 import 'package:plantpal/app/modules/home/views/tabs/my_plants.dart';
 import 'package:plantpal/app/modules/home/views/tabs/nursery.dart';
 import 'package:plantpal/app/modules/home/views/tabs/profile.dart';
-import 'package:plantpal/app/modules/home/views/widgets/custom_button.dart';
 import 'package:plantpal/app/modules/home/views/widgets/nav_item.dart';
 import 'package:plantpal/app/routes/app_pages.dart';
 import '../controllers/home_controller.dart';
