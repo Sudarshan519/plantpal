@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plantpal/app/core/constants.dart';
-import 'package:plantpal/app/modules/home/views/tabs/tabs.dart';
+import 'package:plantpal/app/modules/home/views/widgets/custom_button.dart';
 import 'package:plantpal/app/modules/intro/views/intro_view.dart';
 import '../controllers/add_plant_controller.dart';
 

@@ -44,7 +44,7 @@ class SignupView extends GetView<SignupController> {
                   authController.signIn().then((onResponse) {
                     onResponse.fold((left) {
                       Get.snackbar("Error", left.message);
-                    }, (right) => Get.toNamed(Routes.HOME));
+                    }, (right) => Get.offNamed(Routes.HOME));
                   });
                 },
               ).animate(target: 1).fade(end: 0.8).scaleXY(end: 1),

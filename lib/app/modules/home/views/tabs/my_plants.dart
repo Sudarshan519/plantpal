@@ -5,10 +5,11 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plantpal/app/core/constants.dart';
 import 'package:plantpal/app/features/auth/presentation/auth_controller.dart';
-import 'package:plantpal/app/features/home/data/model/plant.dart';
-import 'package:plantpal/app/features/home/presentation/plant_controller.dart';
+import 'package:plantpal/app/features/plant/data/model/plant.dart';
+import 'package:plantpal/app/features/plant/presentation/plant_controller.dart';
+import 'package:plantpal/app/modules/home/controllers/home_controller.dart';
 import 'package:plantpal/app/modules/home/views/home_view.dart';
-import 'package:plantpal/app/modules/home/views/tabs/tabs.dart';
+import 'package:plantpal/app/modules/home/views/widgets/custom_button.dart';
 import 'package:plantpal/app/routes/app_pages.dart';
 
 class MyPlant extends StatelessWidget {
@@ -181,7 +182,9 @@ class EmptyPlantsWidget extends StatelessWidget {
                 children: [
                   CustomButton(
                     label: 'Visit Nursery',
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.find<HomeController>().selectedNav = 2;
+                    },
                   ),
                   CustomButton(
                     label: 'Add Plant',

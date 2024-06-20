@@ -1,4 +1,4 @@
-import 'package:plantpal/app/features/home/data/model/plant.dart';
+import 'package:plantpal/app/features/plant/data/model/plant.dart';
 
 abstract class PlantRepository {
   Future<void> addPlantRepository(PlantModel plantModel);

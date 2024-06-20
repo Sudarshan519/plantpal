@@ -33,14 +33,15 @@ class AuthController extends GetxController {
             username: username.value, selectedFeature: selectedFeature.value);
     result.fold((left) {}, (user) {
       _user = user.user;
+      username(_user?.displayName);
     });
     return result;
   }
 
   Future<void> signOut() async {
-    Get.reset(clearRouteBindings: true);
     await _authUseCase.signOut();
-
+    username('');
+    selectedFeature('');
     _user = null;
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:plantpal/app/features/home/data/model/plant.dart';
-import 'package:plantpal/app/features/home/domain/repository/plant_repository_interface.dart';
+import 'package:plantpal/app/features/plant/data/model/plant.dart';
+import 'package:plantpal/app/features/plant/domain/repository/plant_repository_interface.dart';
 
 class PlantController extends GetxController with StateMixin<List<PlantModel>> {
   final PlantRepository plantRepository = Get.find();

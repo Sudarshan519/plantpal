@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:plantpal/app/features/home/data/model/plant.dart';
+import 'package:plantpal/app/features/plant/data/model/plant.dart';
 
 const splashColor = Color(0xff1C7927);
 const backgroundColor = Colors.white;

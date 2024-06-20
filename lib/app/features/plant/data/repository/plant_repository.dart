@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:plantpal/app/features/home/data/model/plant.dart';
-import 'package:plantpal/app/features/home/domain/repository/plant_repository_interface.dart';
+import 'package:plantpal/app/features/plant/data/model/plant.dart';
+import 'package:plantpal/app/features/plant/domain/repository/plant_repository_interface.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class PlantRepositoryImpl implements PlantRepository {

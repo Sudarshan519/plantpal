@@ -22,9 +22,11 @@ dependencies:
   google_fonts: ^6.2.1
   google_sign_in: ^6.2.1
   image_picker: ^1.1.2
-
+  flutter_native_splash: 
 dev_dependencies:
   flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.13.1
+  
   flutter_test:
     sdk: flutter
 
@@ -45,3 +47,5 @@ flutter:
     - assets/svg/pana-full.svg
     - assets/svg/rafiki.svg
     - assets/Frame 6.png
+
+
