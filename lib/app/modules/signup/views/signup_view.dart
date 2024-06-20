@@ -46,7 +46,6 @@ class SignupView extends GetView<SignupController> {
                       Get.snackbar("Error", left.message);
                     }, (right) => Get.toNamed(Routes.HOME));
                   });
-                  // Get.toNamed(Routes.HOME);
                 },
               ).animate(target: 1).fade(end: 0.8).scaleXY(end: 1),
             ),

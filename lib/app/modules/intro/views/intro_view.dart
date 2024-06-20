@@ -124,12 +124,14 @@ class AppButton extends StatelessWidget {
     this.icon,
     this.color,
     this.btnTextColor,
+    this.child,
   });
   final Widget? icon;
   final String title;
   final Function()? onPressed;
   final Color? color;
   final Color? btnTextColor;
+  final Widget? child;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -153,7 +155,8 @@ class AppButton extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   )),
               onPressed: onPressed,
-              child: Text(title, style: const TextStyle(color: Colors.white)),
+              child: child ??
+                  Text(title, style: const TextStyle(color: Colors.white)),
             )
           : ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
@@ -165,9 +168,11 @@ class AppButton extends StatelessWidget {
                   SvgPicture.asset('assets/svg/rocket-launch.svg',
                       height: 24.r, width: 24.r),
               onPressed: onPressed,
-              label: Text(title,
-                  style: TextStyle(
-                      color: btnTextColor ?? Colors.white, fontSize: 16.sp)),
+              label: child ??
+                  Text(title,
+                      style: TextStyle(
+                          color: btnTextColor ?? Colors.white,
+                          fontSize: 16.sp)),
             ),
     );
   }

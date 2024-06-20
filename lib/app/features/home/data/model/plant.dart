@@ -19,10 +19,10 @@ class PlantModel {
       QueryDocumentSnapshot<Map<String, dynamic>> json) {
     final data = json.data();
     id = json.id;
-    name = data['name'];
-    description = data['description'];
-    image = data['image'];
-    email = data['email'];
+    name = data['name'] ?? "";
+    description = data['description'] ?? "";
+    image = data['image'] ?? "";
+    email = data['email'] ?? "";
   }
 
   Map<String, dynamic> toJson() {

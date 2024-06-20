@@ -5,9 +5,11 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plantpal/app/core/constants.dart';
 import 'package:plantpal/app/features/auth/presentation/auth_controller.dart';
+import 'package:plantpal/app/features/home/data/model/plant.dart';
 import 'package:plantpal/app/features/home/presentation/plant_controller.dart';
 import 'package:plantpal/app/modules/home/views/home_view.dart';
 import 'package:plantpal/app/modules/home/views/tabs/tabs.dart';
+import 'package:plantpal/app/routes/app_pages.dart';
 
 class MyPlant extends StatelessWidget {
   const MyPlant({
@@ -16,32 +18,37 @@ class MyPlant extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: NeverScrollableScrollPhysics(),
-      child: Column(
-        children: [
-          SizedBox(
-            width: double.infinity,
-            height: 256.h,
-            child: const BackroundImage(),
-          ),
-          Transform.translate(
-            offset: const Offset(0, -160),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const TopHeader(),
-                SizedBox(
-                  height: 24.h,
-                ),
-                const TodaysFact(),
-                SizedBox(height: 24.h),
-                MyPlants()
-              ],
+    return RefreshIndicator(
+      onRefresh: () async {
+        final PlantController controller = Get.find();
+        await controller.loadPlants();
+      },
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              width: double.infinity,
+              height: 256.h,
+              child: const BackroundImage(),
             ),
-          ),
-        ],
+            Transform.translate(
+              offset: const Offset(0, -160),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const TopHeader(),
+                  SizedBox(
+                    height: 24.h,
+                  ),
+                  const TodaysFact(),
+                  SizedBox(height: 24.h),
+                  const MyPlants()
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -104,21 +111,11 @@ class MyPlants extends StatelessWidget {
             style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w400),
           ),
         ),
-        SizedBox(
-          height: 20.h,
-        ),
+        SizedBox(height: 20.h),
         controller.obx(
-          (state) => state?.isEmpty == true
-              ? const NoPlantsWidget()
-              : ListView.builder(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  itemCount: state?.length,
-                  itemBuilder: (_, i) => RPadding(
-                        padding: const EdgeInsets.only(
-                            left: 20, right: 20, bottom: 8),
-                        child: PlantComponent(plantModel: state![i]),
-                      )),
+          (plants) => plants?.isEmpty == true
+              ? const EmptyPlantsWidget()
+              : PlantLists(plants: plants ?? []),
           onError: (error) => Text(error ?? ''),
         ),
       ],
@@ -126,8 +123,28 @@ class MyPlants extends StatelessWidget {
   }
 }
 
-class NoPlantsWidget extends StatelessWidget {
-  const NoPlantsWidget({
+class PlantLists extends StatelessWidget {
+  const PlantLists({
+    super.key,
+    required this.plants,
+  });
+  final List<PlantModel> plants;
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        padding: EdgeInsets.zero,
+        shrinkWrap: true,
+        itemCount: plants.length,
+        itemBuilder: (_, i) => RPadding(
+              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 8),
+              child: PlantComponent(plantModel: plants[i]),
+            ));
+  }
+}
+
+class EmptyPlantsWidget extends StatelessWidget {
+  const EmptyPlantsWidget({
     super.key,
   });
 
@@ -168,7 +185,9 @@ class NoPlantsWidget extends StatelessWidget {
                   ),
                   CustomButton(
                     label: 'Add Plant',
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(Routes.ADD_PLANT);
+                    },
                   ),
                 ],
               )

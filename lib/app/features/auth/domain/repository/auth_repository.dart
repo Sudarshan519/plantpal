@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:plantpal/app/core/failure/auth_failure.dart';
 
-abstract class AuthServiceInterface {
+abstract class AuthRepository {
   Stream<User?> get authStateChanges;
   User? get user;
 

@@ -30,9 +30,11 @@ class AddPlantController extends GetxController {
   void increment() => count.value++;
   Future<void> uploadImage() async {
     var image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    image_uploading(true);
-    selectedImage(await plantRepository.uploadImage(image?.path ?? ""));
-    image_uploading(false);
+    if (image != null) {
+      image_uploading(true);
+      selectedImage(await plantRepository.uploadImage(image?.path ?? ""));
+      image_uploading(false);
+    }
   }
 
   Future<void> uploadPlant(String name, String description) async {

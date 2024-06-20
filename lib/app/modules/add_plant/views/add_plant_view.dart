@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plantpal/app/core/constants.dart';
+import 'package:plantpal/app/modules/home/views/tabs/tabs.dart';
 import 'package:plantpal/app/modules/intro/views/intro_view.dart';
 import '../controllers/add_plant_controller.dart';
 
@@ -13,7 +14,7 @@ class AddPlantView extends GetView<AddPlantController> {
   Widget build(BuildContext context) {
     final name = TextEditingController();
     final description = TextEditingController();
-
+    final formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Plant'),
@@ -21,61 +22,71 @@ class AddPlantView extends GetView<AddPlantController> {
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 18.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextFieldWithLabel(
-              label: 'Plant Name',
-              controller: name,
-              onChanged: (plantname) {},
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            TextFieldWithLabel(
-              label: 'Description',
-              controller: description,
-              onChanged: (plantname) {},
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            LabelWithChild(
-              label: "Plant Image",
-              child: SizedBox(
-                height: 40,
-                child: AppButton(
-                  color: Colors.grey,
-                  title: 'Pick Image',
-                  onPressed: () async {
-                    controller.uploadImage();
-                  },
+        child: Form(
+          key: formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextFieldWithLabel(
+                label: 'Plant Name',
+                controller: name,
+                onChanged: (plantname) {},
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              TextFieldWithLabel(
+                label: 'Description',
+                controller: description,
+                onChanged: (plantname) {},
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              LabelWithChild(
+                label: "Plant Image",
+                child: SizedBox(
+                  height: 40,
+                  child: CustomButton(
+                    // color: Colors.grey,
+                    label: 'Browse',
+                    onPressed: () async {
+                      controller.uploadImage();
+                    },
+                  ),
                 ),
               ),
-            ),
-            Obx(
-              () => controller.selectedImage.value == ''
-                  ? const SizedBox()
-                  : controller.image_uploading.value
+              Obx(
+                () => controller.image_uploading.value
+                    ? const CircularProgressIndicator()
+                    : controller.selectedImage.value == ''
+                        ? const SizedBox()
+                        : Image.network(
+                            controller.selectedImage.value,
+                            height: 300,
+                          ),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Obx(
+                () => AppButton(
+                  title: "Upload Plant",
+                  child: controller.uploadingPlant.isTrue
                       ? const CircularProgressIndicator()
-                      : Image.network(
-                          controller.selectedImage.value,
-                          height: 300,
-                        ),
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            AppButton(
-              title: "Upload Plant",
-              onPressed: () {
-                controller.uploadPlant(
-                  name.text,
-                  description.text,
-                );
-              },
-            )
-          ],
+                      : null,
+                  onPressed: () {
+                    if (formKey.currentState?.validate() == true) {
+                      controller.uploadPlant(
+                        name.text,
+                        description.text,
+                      );
+                    }
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

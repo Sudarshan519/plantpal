@@ -38,6 +38,7 @@ class AuthController extends GetxController {
   }
 
   Future<void> signOut() async {
+    Get.reset(clearRouteBindings: true);
     await _authUseCase.signOut();
 
     _user = null;

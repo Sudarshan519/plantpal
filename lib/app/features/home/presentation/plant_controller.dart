@@ -14,7 +14,7 @@ class PlantController extends GetxController with StateMixin<List<PlantModel>> {
     loadPlants();
   }
 
-  void loadPlants() async {
+  Future<void> loadPlants() async {
     change(null, status: RxStatus.loading());
     try {
       var plants = await plantRepository.allPlants();

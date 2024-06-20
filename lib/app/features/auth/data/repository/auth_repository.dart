@@ -3,9 +3,9 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:plantpal/app/core/failure/auth_failure.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:plantpal/app/features/auth/domain/repository/auth_service_interface.dart';
+import 'package:plantpal/app/features/auth/domain/repository/auth_repository.dart';
 
-class AuthRepositoryImpl implements AuthServiceInterface {
+class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Either<AuthFailure, UserCredential>> loginWithGoogle(
       {String? username, String? selectedFeature}) async {
@@ -28,7 +28,9 @@ class AuthRepositoryImpl implements AuthServiceInterface {
       // Once signed in, return the UserCredential
       UserCredential? userCredential =
           await FirebaseAuth.instance.signInWithCredential(credential);
-      userCredential.user?.updateDisplayName(username);
+      if (username?.isNotEmpty == true) {
+        userCredential.user?.updateDisplayName(username);
+      }
 
       /// update user name and feature
       FirebaseFirestore.instance

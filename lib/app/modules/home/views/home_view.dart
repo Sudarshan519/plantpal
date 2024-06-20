@@ -15,50 +15,50 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     /// nav
-    var bottomNav = Container(
-      padding: const EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border(top: BorderSide(color: Colors.grey.shade200)),
-          boxShadow: const [
-            BoxShadow(offset: Offset(1, 0), color: Colors.grey)
-          ]),
-      child: SizedBox(
-        height: 64,
-        child: Obx(
-          () => Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              NavItem(
-                icon: 'assets/nav_icons/Home.svg',
-                label: "My Plants",
-                isSelected: controller.selectedNav == 0,
-                onPressed: () => controller.selectedNav = 0,
+    Widget bottomNav() => Container(
+          padding: REdgeInsets.all(8.0),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border(top: BorderSide(color: Colors.grey.shade200)),
+              boxShadow: const [
+                BoxShadow(offset: Offset(1, 0), color: Colors.grey)
+              ]),
+          child: SizedBox(
+            height: 64,
+            child: Obx(
+              () => Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  NavItem(
+                    icon: 'assets/nav_icons/Home.svg',
+                    label: "My Plants",
+                    isSelected: controller.selectedNav == 0,
+                    onPressed: () => controller.selectedNav = 0,
+                  ),
+                  NavItem(
+                    icon: 'assets/nav_icons/Diary.svg',
+                    label: "Community",
+                    isSelected: controller.selectedNav == 1,
+                    onPressed: () => controller.selectedNav = 1,
+                  ),
+                  NavItem(
+                    icon: 'assets/nav_icons/Chart.svg',
+                    label: "Nursery",
+                    isSelected: controller.selectedNav == 2,
+                    onPressed: () => controller.selectedNav = 2,
+                  ),
+                  NavItem(
+                    icon: 'assets/nav_icons/Settings.svg',
+                    label: "Profile",
+                    isSelected: controller.selectedNav == 3,
+                    onPressed: () => controller.selectedNav = 3,
+                  ),
+                ],
               ),
-              NavItem(
-                icon: 'assets/nav_icons/Diary.svg',
-                label: "Community",
-                isSelected: controller.selectedNav == 1,
-                onPressed: () => controller.selectedNav = 1,
-              ),
-              NavItem(
-                icon: 'assets/nav_icons/Chart.svg',
-                label: "Nursery",
-                isSelected: controller.selectedNav == 2,
-                onPressed: () => controller.selectedNav = 2,
-              ),
-              NavItem(
-                icon: 'assets/nav_icons/Settings.svg',
-                label: "Profile",
-                isSelected: controller.selectedNav == 3,
-                onPressed: () => controller.selectedNav = 3,
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
-    );
+        );
 
     /// pages
     var pages = [
@@ -67,9 +67,11 @@ class HomeView extends GetView<HomeController> {
       const Nursery(),
       const Profile(),
     ];
+
     return Scaffold(
+      extendBodyBehindAppBar: false,
       body: Obx(() => pages[controller.selectedNav]),
-      bottomNavigationBar: bottomNav,
+      bottomNavigationBar: bottomNav(),
       floatingActionButton: const FloatingActionWidget(),
     );
   }
@@ -153,15 +155,6 @@ class BackroundImage extends StatelessWidget {
   }
 }
 
-final plantModels = [
-  PlantModel(
-      name: 'Aloe Vera',
-      description:
-          "A plant with beautiful petal but protected with throne. Smell amazing with health benefit.....",
-      image:
-          "https://images.unsplash.com/photo-1485955900006-10f4d324d411?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-];
-
 class PlantComponent extends StatelessWidget {
   const PlantComponent({
     super.key,
@@ -187,6 +180,9 @@ class PlantComponent extends StatelessWidget {
                 child: Image.network(
                   plantModel.image ??
                       'https://images.unsplash.com/photo-1485955900006-10f4d324d411?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                  errorBuilder: (_, error, stack) => Image.network(
+                    'https://images.unsplash.com/photo-1485955900006-10f4d324d411?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                  ),
                   width: 114.w,
                   height: 107.h,
                   fit: BoxFit.cover,

@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:plantpal/app/features/auth/domain/repository/auth_service_interface.dart';
+import 'package:plantpal/app/features/auth/domain/repository/auth_repository.dart';
 import 'package:plantpal/app/features/auth/domain/usecase/auth_usecase_failure.dart';
 
 class AuthenticationUseCase {
-  final AuthServiceInterface _authService;
+  final AuthRepository _authService;
 
   AuthenticationUseCase(this._authService);
   User? currentUser() => _authService.user;
